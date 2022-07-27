@@ -2,16 +2,20 @@
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3001;
+
 const router = require('./routes/htmlRoutes');
 const apiRouter = require('./routes/apiRoutes');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+
 app.use('/', router);
 app.use('/api', apiRouter);
 
-app.listen(PORT, () => console.log('listening'));
+app.listen(PORT, () => {
+  console.log(`Note Taker app is listening at http://localhost:${PORT}`);
+});
 
 
 
