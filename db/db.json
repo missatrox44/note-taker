@@ -26,5 +26,21 @@
     {
         "title": "New Note Title",
         "text": "More note text here"
+    },
+    {
+        "title": "Test Note",
+        "text": "Text goes here"
+    },
+    {
+        "title": "Please Work",
+        "text": "Did it work?"
+    },
+    {
+        "title": "Please Work",
+        "text": "Did it work?"
+    },
+    {
+        "title": "What about now",
+        "text": "Maybe"
     }
 ]

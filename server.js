@@ -16,11 +16,29 @@ app.use(express.static('public'));
 
 //routes used
 app.use('/', router);
-app.use('/api', apiRouter);
+app.use('/api/', apiRouter);
+
+
+
+// //html path to notes
+// app.get('/notes', (req, res) => {
+//   console.log('Go ahead and add your note');
+//   res.sendFile(path.join(__dirname,'./public/notes.html')
+// )});
+
+// //html path to index
+// app.get('*', (req, res) => {
+//   // console.log('You found your way back home!');
+//   res.sendFile(path.join(__dirname,'./public/index.html')
+// )});
+
 
 app.listen(PORT, () => {
   console.log(`Note Taker app is listening at http://localhost:${PORT}`);
 });
+
+
+
 
 
 

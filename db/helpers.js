@@ -1,4 +1,4 @@
-//following code taken from UT Austin boocamp curriculum
+//following code taken from UT Austin bootcamp curriculum
 const fs = require('fs');
 const util = require('util');
 
