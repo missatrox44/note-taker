@@ -3,20 +3,40 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
+const api = require('./routes/index.js');
 const PORT = process.env.PORT || 3001;
 
-const router = require('./routes/htmlRoutes');
-const apiRouter = require('./routes/apiRoutes');
+// const router = require('./routes/htmlRoutes');
+// const apiRouter = require('./routes/apiRoutes');
 
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/api', api);
 //client side files live in public directory
 app.use(express.static('public'));
 
+
+//GET route for homepage
+app.get('/', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/index.html'))
+);
+
+// GET Route for notes page
+app.get('/notes', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/notes.html'))
+);
+
+app.listen(PORT, () => {
+  console.log(`Note Taker app is listening at http://localhost:${PORT}`);
+});
+
+
+
+
 //routes used
-app.use('/', router);
-app.use('/api/', apiRouter);
+// app.use('/', router);
+// app.use('/api/', apiRouter);
 
 
 
@@ -33,9 +53,6 @@ app.use('/api/', apiRouter);
 // )});
 
 
-app.listen(PORT, () => {
-  console.log(`Note Taker app is listening at http://localhost:${PORT}`);
-});
 
 
 

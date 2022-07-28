@@ -1,15 +1,11 @@
-
-// const fs = require('fs');
 const notes = require('express').Router();
-
-const { readAndAppend, readFromFile } = require('../db/helpers');
+const { readAndAppend, readFromFile } = require('../db/fsUtils');
 const uuid = require('../db/uuid');
 
-
 //GET route to retrieve all notes
-notes.get('/notes', (req, res) => {
+notes.get('/', (req, res) => {
   console.log(`${req.method} received request for notes`);
-  readFromFile('../db/db.json').then((data) => res.json(JSON.parse(data)));
+  readFromFile('../db/db.json', 'utf8').then((data) => res.json(data));
 });
 
 
@@ -37,25 +33,3 @@ notes.post('/', (req, res) => {
 
 
 module.exports = notes;
-
-
-
-
-
-
-  // console.log(`${req.method} received`);
-  // console.log(req.body);
-  //   const { title, text } = req.body;
-
-  //   if(req.body) {
-  //     const newNote = {
-  //       title,
-  //       text,
-  //       // note_id: uuidv4(),
-  //     };
-
-  //     readAndAppend(newNote, '../db/db.json');
-  //     res.json('Note added successfully!');
-  //   } else {
-  //     res.errored('Error in adding note.');
-  //   }
