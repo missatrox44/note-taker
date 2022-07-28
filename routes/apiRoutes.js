@@ -1,40 +1,24 @@
 const path = require('path');
-const fs = require('fs');
+// const fs = require('fs');
 const router = require('express').Router();
 
-// const { v4: uuidv4 } = require('uuid');
-const readAndAppend = require('../db/helpers');
+const { readAndAppend, readFromFile } = require('../db/helpers');
 
-// router.get('/notes', (req, res) => {
-//   console.log('router getting notes')
-// let dbcontents = fs.readFile('../db/db.json');
-// console.log(dbcontents)
-// });
 
+//POST route for notes to be added to JSON and return new note template to client
 router.post('/notes', (req, res) => {
-  console.log(`${req.method} received`);
-  console.log(req.body);
-    const { title, text } = req.body;
-
-    if(req.body) {
-      const newNote = {
-        title,
-        text,
-        // note_id: uuidv4(),
-      };
-
-      readAndAppend(newNote, '../db/db.json');
-      res.json('Note added successfully!');
-    } else {
-      res.errored('Error in adding note.');
-    }
+  const { title, text } = req.body;
+  const newNote = { title, text };
+  readAndAppend(newNote, path.join(__dirname, '../db/db.json'))
 });
 
 
+//GET route to read JSON file and return saved notes in JSON format
 router.get('/notes', (req, res) => {
   console.log(`${req.method} received`);
-  readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
+  readFromFile('../db/db.json').then((data) => res.json(JSON.parse(data)));
 });
+
 
 
 
@@ -44,4 +28,21 @@ module.exports = router;
 
 
 
-// console.log(helpers.read());
+
+
+  // console.log(`${req.method} received`);
+  // console.log(req.body);
+  //   const { title, text } = req.body;
+
+  //   if(req.body) {
+  //     const newNote = {
+  //       title,
+  //       text,
+  //       // note_id: uuidv4(),
+  //     };
+
+  //     readAndAppend(newNote, '../db/db.json');
+  //     res.json('Note added successfully!');
+  //   } else {
+  //     res.errored('Error in adding note.');
+  //   }

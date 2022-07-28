@@ -1,15 +1,20 @@
 //server boilerplate
 const express = require('express');
 const app = express();
+const path = require('path');
+
 const PORT = process.env.PORT || 3001;
 
 const router = require('./routes/htmlRoutes');
 const apiRouter = require('./routes/apiRoutes');
 
+//middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+//client side files live in public directory
 app.use(express.static('public'));
 
+//routes used
 app.use('/', router);
 app.use('/api', apiRouter);
 
