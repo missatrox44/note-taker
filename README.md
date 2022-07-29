@@ -2,7 +2,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Deployed Site
-[Heroku Link](HEROKU LINK GOES HERE)
+[Heroku Link](https://note-taker-baqla.herokuapp.com/)
 
 ## Description
 This program allows a business owner the ability to write and save notes so that they can organize their thoughts and keep track of tasks needed to complete.
